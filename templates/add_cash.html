@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Cash
+{% endblock %}
+
+{% block main %}
+  <p id="t_one">Hello! The obvious way to add money to this website would be to put in your credit card information and add actual money, but that cannot happen. Not that I would buy anything with other people's credit cards, but anyone would be idiotic to trust a high schooler with that type of information. </p>
+  <p id="t_two">Thankfully, I can give you fake money to use on this fake investment app, for free. However, I won't just hand you this precious currency. You'll have to earn it.</p>
+  <button class="btn btn-primary" type="button" id="b_one">Let's get this bread.</button>
+  <button class="btn btn-primary" type="button" id="b_two">I'll pass.</button>
+{% endblock %}
+    {% block script %}
+  <script>
+    t_one = document.getElementById("t_one");
+    t_two = document.getElementById("t_two");
+    b_one = document.getElementById("b_one");
+    b_two = document.getElementById("b_two");
+    //step tracks which "step" the user is on in his/her journey
+    let step = 0;
+    let fail = "Unfortunately, I cannot grant you my previously promised free currency. Your incompetence has just astounded me to the point where I am no longer capable of benevolence."
+    //exps is explanations for each of the answers to the questions
+    let exps = ["7 + 4 is relative to the number system in which it is being summed in. We're used to our own base-10 system, and yes, 7 + 4 = 11 in that. However, this system was never defined. It could have been hexidecimal, in which 7 + 4 would be B.","I can't get into the reason why now, but 0 to the 0th power IS NOT 1. Check out why by clicking <a href='https://sbuckley02.github.io'>this link</a>, that I made!",'The word "gif" should probably be pronounced with a hard G sound. I know how English works. However, the inventor of the word, the man himself, Steve Wilhite, declared that the word should be pronounced like "jif." The inventor of a word should get to decide how that word is pronounced. Plus, does "jif" not sound much cooler than "gif?" If it did not, why would the peanut butter brand not be called "gif"? Riddle me that.',"Sure, I subjectively like The Office more than The Big Bang Theory. However, The Office is also an objectively superior show. It is pure gold, from the hilariousness of the main characters, like Michael Scott or Dwight Schrute, to the impact that the background characters have, like Kevin Malone or Creed. The Big Bang Theory just doesn't have that. Its characters are simply stereotypes, with no depth of character whatsoever. Also, if a show has to tell the audience when to laugh (I'm referring to the obnoxious laugh track), there's a problem.","We do know what the meaning of life is: 42. The only thing is that we still need to figure out what 42 means..."];
+    function hideButtons(){
+      //hide the buttons (basically disables the user from advancing forward)
+      b_one.style = "visibility:hidden";
+      b_two.style = "visibility:hidden";
+    }
+    function setHTMLs(t1,t2,b1,b2){
+      //set each of the text boxes and button texts to something
+      t_one.innerHTML = t1;
+      t_two.innerHTML = t2;
+      b_one.innerHTML = b1;
+      b_two.innerHTML = b2;
+    }
+    b_one.onclick = function(){
+      if(step == 0){
+        setHTMLs("Good choice.","You will get your bread in no time.","Next","Also Next");
+      }
+      else if(step == 1){
+        setHTMLs("7 + 4 = 11","Is this a true statement?","Yes","Not necessarily");
+      }
+      else if(step == 2){
+        setHTMLs(fail,"Even a simpleton would know that "+exps[0],"","");
+        hideButtons();
+      }
+      else if(step == 3){
+        setHTMLs("","What is 0 to the 0th power?","1","Undefined");
+      }
+      else if(step == 4){
+        setHTMLs(fail,exps[1],"","");
+        hideButtons();
+      }
+      else if(step == 5){
+        setHTMLs("Controversial question time.",'How do you pronounce "gif"?','Like Jif, the delicious brand of peanut butter (can I get advertising money now?)',"With a hard G sound");
+      }
+      else if(step == 6){
+        setHTMLs("Astounding work.",exps[2],"Next","Also Next");
+      }
+      else if(step == 7){
+        setHTMLs("Simple (and easy) question.","Which is superior?","The Office (U.S.)","The Big Bang Theory");
+      }
+      else if(step == 8){
+        setHTMLs("Light work.",exps[3],"Next","Also Next");
+      }
+      else if(step == 9){
+        setHTMLs("Don't worry, this is the last one.","What is the meaning of life?","42","We don't know yet");
+      }
+      else if(step == 10){
+        setHTMLs("I have to say: I did not think you would get this far.",exps[4],"Next","Also Next");
+      }
+      else if(step == 11){
+        setHTMLs("Good job! You have passed the test. Your parents should be proud of you. However, I must ask you one last question.","Do you really care about this fake currency?","YES! Give me the damn money already.","I don't really care. You can give me the money if you want to.");
+      }
+      else if(step == 12){
+        setHTMLs('How dare you! I am astounded at the absolute AUDACITY you have to be THAT rude. That was a disgusting comment. I am offering you FREE currency. How do you respond? With complete impatience and a lack of respect. I made this app, you know. Also, I do not appreciate the cursing. Is "damn" a curse? I consider it so.',"Just for that, you lose your privilege to free currency. Good job. You ruined it for yourself.","","");
+        hideButtons();
+      }
+      step++;
+    }
+    b_two.onclick = function(){
+      if(step == 0){
+        setHTMLs("Shame","","","");
+        hideButtons();
+      }
+      else if(step == 1){
+        setHTMLs("7 + 4 = 11","Is this a true statement?","Yes","Not necessarily");
+      }
+      else if(step == 2){
+        setHTMLs("Spectacular work!",exps[0],"Next","Also Next");
+      }
+      else if(step == 3){
+        setHTMLs("","What is 0 to the 0th power?","1","Undefined");
+      }
+      else if(step == 4){
+        setHTMLs("I'm impressed.",exps[1],"Next","Also Next");
+      }
+      else if(step == 5){
+        setHTMLs("Controversial question time.",'How do you pronounce "gif"?','Like Jif, the delicious brand of peanut butter (can I get advertising money now?)',"With a hard G sound");
+      }
+      else if(step == 6){
+        setHTMLs(fail,exps[2],"","");
+        hideButtons();
+      }
+      else if(step == 7){
+        setHTMLs("Simple (and easy) question.","Which is superior?","The Office (U.S.)","The Big Bang Theory");
+      }
+      else if(step == 8){
+        setHTMLs(fail,exps[3],"","");
+        hideButtons();
+      }
+      else if(step == 9){
+        setHTMLs("Don't worry, this is the last one.","What is the meaning of life?","42","We don't know yet");
+      }
+      else if(step == 10){
+        setHTMLs(fail,exps[4],"","");
+        hideButtons();
+      }
+      else if(step == 11){
+        setHTMLs("Good job! You have passed the test. Your parents should be proud of you. However, I must ask you one last question.","Do you really care about this fake currency?","YES! Give me the damn money already.","I don't really care. You can give me the money if you want to, but it's okay if you don't.");
+      }
+      else if(step == 12){
+        setHTMLs("How nice of you...taking my full test without actually caring about the money?",'HA, you thought! You are very clearly lying. If you took time out of your day to answer all five of those questions correctly, then you had to have cared about acquiring the free currency. For that reason, I cannot grant you it. I cannot, in my right mind, do a good deed to a filthy liar. Liars are the worst kind of people. In the words of Ron Swanson: "There is only one thing I hate more than lying: skim milk, which is water lying about being milk."',"","");
+        hideButtons();
+      }
+      step++;
+    }
+  </script>
+  {% endblock %}
